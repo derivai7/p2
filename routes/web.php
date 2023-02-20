@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +18,22 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return "Selamat Datang";
-});
+//praktikum 1
 
-Route::get('/about', function () {
-    return "Nim: 2141720068, Nama: Bahtiar Rifa'i";
-});
+// Route::get('/', function () {
+//     return "Selamat Datang";
+// });
 
-Route::get('/articles/{id}', function ($id) {
-    return "Halaman Artikel dengan ID $id";
-});
+// Route::get('/about', function () {
+//     return "Nim: 2141720068, Nama: Bahtiar Rifa'i";
+// });
 
+// Route::get('/articles/{id}', function ($id) {
+//     return "Halaman Artikel dengan ID $id";
+// });
+
+//praktikum 2
+
+Route::resource('/', PageController::class);
+Route::get('/about', [PageController::class, 'about']);
+Route::get('/articles/{id?}', [PageController::class, 'articles']);
