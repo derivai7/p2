@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-class HomeController extends Controller
+class ProductController extends Controller
 {
     public function index() {
-        return "Selamat Datang";
+        return view('product');
+    }
+
+    public function product($product) {
+        return view('product')->with('product', $product);
     }
 }

@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Dashboard</h1>
+                        <h1>Pengalaman Kuliah</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -18,7 +18,7 @@
             <!-- Content -->
             <div class="card">
                 <div class="card-body">
-                    Selamat Datang!
+                    {{ $content }}
                 </div>
             </div>
             <!-- /.card -->
@@ -26,7 +26,3 @@
         </section>
         <!-- /.content -->
 @endsection
-
-@push('additional-js')
-    alert('Selamat Datang')
-@endpush

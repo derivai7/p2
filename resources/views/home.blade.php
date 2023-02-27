@@ -12,13 +12,13 @@
 
         <!-- Styles -->
         <style>
-            
+
         </style>
     </head>
     <body>
         <ul>
             <li>
-                <a href="http://127.0.0.1:8000/category">Category</a>
+                <a href="http://127.0.0.1:8000/product">Product</a>
             </li>
             <li>
                 <a href="http://127.0.0.1:8000/news/ponorogo">News

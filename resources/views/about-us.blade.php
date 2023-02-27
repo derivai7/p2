@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>News</title>
+        <title>About Us</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,6 +16,6 @@
         </style>
     </head>
     <body>
-    <p>Ini halaman news</p>
+    <p>Ini halaman about us</p>
     </body>
 </html>

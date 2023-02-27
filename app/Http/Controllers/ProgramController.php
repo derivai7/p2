@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProgramController extends Controller
 {
     public function index() {
-        return view('product');
+        return view('program');
     }
 
-    public function product($product) {
-        return view('product')->with('product', $product);
+    public function magang() {
+        return view('program')->with('program', 'magang');
+    }
+
+    public function karir() {
+        return view('program')->with('program', 'karir');
     }
 }

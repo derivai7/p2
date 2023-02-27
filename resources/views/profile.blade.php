@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Dashboard</h1>
+                        <h1>Profile</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -17,8 +17,11 @@
 
             <!-- Content -->
             <div class="card">
-                <div class="card-body">
-                    Selamat Datang!
+                <div class="card-header">
+                    <strong>Nama</strong><br> {{ $data['name'] }}
+                </div>
+                <div class="card-footer">
+                    <strong>Alamat</strong><br> {{ $data['address'] }}
                 </div>
             </div>
             <!-- /.card -->
@@ -26,7 +29,3 @@
         </section>
         <!-- /.content -->
 @endsection
-
-@push('additional-js')
-    alert('Selamat Datang')
-@endpush

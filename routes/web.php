@@ -1,10 +1,16 @@
 <?php
 
-use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KuliahController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+//pwl-2
 
 //praktikum 1
 
@@ -43,54 +51,81 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/articles/{id?}', [PageController::class, 'articles']);
 
 // Route::resource('/', HomeController::class);
-// Route::resource('/about', AboutController::class);
+// Route::resource('/about', AboutUsController::class);
 // Route::resource('/articles/{id?}', ArticleController::class);
 
 //praktikum 3
 
-Route::prefix('category')->group(function () {
-    Route::get('/', function () {
-        return view('category');
-    });
-    Route::get('/marbel-edu-games', function () {
-        return "ini adalah halaman category marbel edu games";
-    });
-    Route::get('/marbel-and-friend-kids-games', function () {
-        return "ini adalah halaman category marbel and friend kids games";
-    });
-    Route::get('/riry-story-books', function () {
-        return "ini adalah halaman category riry story books";
-    });
-    Route::get('/kolak-kids-songs', function () {
-        return "ini adalah halaman category kolak kids";
-    });
+//Route::prefix('category')->group(function () {
+//    Route::get('/', function () {
+//        return view('category');
+//    });
+//    Route::get('/marbel-edu-games', function () {
+//        return "ini adalah halaman category marbel edu games";
+//    });
+//    Route::get('/marbel-and-friend-kids-games', function () {
+//        return "ini adalah halaman category marbel and friend kids games";
+//    });
+//    Route::get('/riry-story-books', function () {
+//        return "ini adalah halaman category riry story books";
+//    });
+//    Route::get('/kolak-kids-songs', function () {
+//        return "ini adalah halaman category kolak kids";
+//    });
+//});
+//
+//Route::get('/news/{title}', function ($title) {
+//    return "Berita tentang $title";
+//});
+//
+//Route::prefix('program')->group(function () {
+//    Route::get('/', function () {
+//        return view('program');
+//    });
+//    Route::get('/karir', function () {
+//        return "ini adalah halaman program karir";
+//    });
+//    Route::get('/magang', function () {
+//        return "ini adalah halaman program magang";
+//    });
+//    Route::get('/kunjungan-industri', function () {
+//        return "ini adalah halaman program kunjungan industri";
+//    });
+//});
+//
+//Route::get('/about-us', function () {
+//    return "Ini adalah halaman about us";
+//});
+//
+//Route::resource('/contact-us', ContactUsController::class);
+//
+//Route::get('/', function () {
+//    return view('home');
+//});
+
+//pwl-3
+
+Route::resource('/', HomeController::class);
+
+Route::prefix('product')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/{product}', [ProductController::class, 'product']);
 });
 
-Route::get('/news/{title}', function ($title) {
-    return "Berita tentang $title";
-});
+Route::get('/news/{title}', [NewsController::class, 'index']);
 
 Route::prefix('program')->group(function () {
-    Route::get('/', function () {
-        return view('program');
-    });
-    Route::get('/karir', function () {
-        return "ini adalah halaman program karir";
-    });
-    Route::get('/magang', function () {
-        return "ini adalah halaman program magang";
-    });
-    Route::get('/kunjungan-industri', function () {
-        return "ini adalah halaman program kunjungan industri";
-    });
+    Route::get('/', [ProgramController::class, 'index']);
+    Route::get('/magang', [ProgramController::class, 'magang']);
+    Route::get('/karir', [ProgramController::class, 'karir']);
 });
 
-Route::get('/about-us', function () {
-    return "Ini adalah halaman about us";
-});
+Route::get('/about-us', [AboutUsController::class, 'index']);
 
-Route::resource('/contact-us', ContactController::class);
+Route::resource('/contact-us', ContactUsController::class);
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::resource('/dashboard', DashboardController::class);
+
+Route::resource('/profile', ProfileController::class);
+
+Route::resource('/kuliah', KuliahController::class);

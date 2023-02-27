@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Category</title>
+        <title>{{@$title}}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,6 +16,6 @@
         </style>
     </head>
     <body>
-    <p>Ini halaman product</p>
+    <p>Ini halaman news, berita tentang {{$title}}</p>
     </body>
 </html>
