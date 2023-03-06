@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kendaraan', function (Blueprint $table) {
-            $table->string('nopol', 10)->primary();
-            $table->string('merk', 30)->nullable();
-            $table->string('jenis', 30)->nullable();
-            $table->smallInteger('tahun_buat')->default('2023');
-            $table->string('warna', 10)->nullable();
+        Schema::create('hobi', function (Blueprint $table) {
+            $table->id();
+            $table->string('hobi', 50)->nullable();
+            $table->text('alasan')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kendaraan');
+        Schema::dropIfExists('hobi');
     }
 };

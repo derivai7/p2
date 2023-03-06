@@ -4,7 +4,9 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HobiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\KuliahController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\NewsController;
@@ -129,3 +131,7 @@ Route::resource('/dashboard', DashboardController::class);
 Route::resource('/profile', ProfileController::class);
 
 Route::resource('/kuliah', KuliahController::class);
+
+Route::resource('/kendaraan', KendaraanController::class);
+
+Route::resource('/hobi', HobiController::class);
