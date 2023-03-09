@@ -6,8 +6,10 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HobiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\KuliahController;
+use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
@@ -135,3 +137,10 @@ Route::resource('/kuliah', KuliahController::class);
 Route::resource('/kendaraan', KendaraanController::class);
 
 Route::resource('/hobi', HobiController::class);
+
+Route::resource('/matakuliah', MataKuliahController::class);
+
+Route::prefix('keluarga')->group(function () {
+    Route::get('/', [KeluargaController::class, 'index']);
+    Route::get('/{data:slug}', [KeluargaController::class, 'show']);
+});
