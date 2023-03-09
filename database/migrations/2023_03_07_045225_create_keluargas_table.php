@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('keluargas', function (Blueprint $table) {
+        Schema::create('keluarga', function (Blueprint $table) {
             $table->id();
+            $table->string('status', 20)->nullable();
+            $table->string('slug', 20)->nullable();
+            $table->string('nama', 50)->nullable();
+            $table->enum('jk', ['l', 'p'])->nullable()->default('l');
+            $table->string('tempat_tinggal', 50)->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('keluargas');
+        Schema::dropIfExists('keluarga');
     }
 };
