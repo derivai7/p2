@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HobiController;
@@ -10,11 +10,11 @@ use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\KuliahController;
 use App\Http\Controllers\MataKuliahController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -109,38 +109,48 @@ use Illuminate\Support\Facades\Route;
 
 //pwl-3
 
-Route::resource('/', HomeController::class);
+//Route::resource('/', LoginController::class);
+//
+//Route::prefix('product')->group(function () {
+//    Route::get('/', [ProductController::class, 'index']);
+//    Route::get('/{product}', [ProductController::class, 'product']);
+//});
+//
+//Route::get('/news/{title}', [NewsController::class, 'index']);
+//
+//Route::prefix('program')->group(function () {
+//    Route::get('/', [ProgramController::class, 'index']);
+//    Route::get('/magang', [ProgramController::class, 'magang']);
+//    Route::get('/karir', [ProgramController::class, 'karir']);
+//});
+//
+//Route::get('/about-us', [AboutUsController::class, 'index']);
+//
+//Route::resource('/contact-us', ContactUsController::class);
 
-Route::prefix('product')->group(function () {
-    Route::get('/', [ProductController::class, 'index']);
-    Route::get('/{product}', [ProductController::class, 'product']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/dashboard', DashboardController::class);
+
+    Route::resource('/profile', ProfileController::class);
+
+    Route::resource('/kuliah', KuliahController::class);
+
+    Route::resource('/kendaraan', KendaraanController::class);
+
+    Route::resource('/hobi', HobiController::class);
+
+    Route::resource('/matakuliah', MataKuliahController::class);
+
+    Route::prefix('keluarga')->group(function () {
+        Route::get('/', [KeluargaController::class, 'index']);
+        Route::get('/{data:slug}', [KeluargaController::class, 'show']);
+    });
+
+    Route::get('/logout', [LoginController::class, 'logout']);
 });
 
-Route::get('/news/{title}', [NewsController::class, 'index']);
-
-Route::prefix('program')->group(function () {
-    Route::get('/', [ProgramController::class, 'index']);
-    Route::get('/magang', [ProgramController::class, 'magang']);
-    Route::get('/karir', [ProgramController::class, 'karir']);
-});
-
-Route::get('/about-us', [AboutUsController::class, 'index']);
-
-Route::resource('/contact-us', ContactUsController::class);
-
-Route::resource('/dashboard', DashboardController::class);
-
-Route::resource('/profile', ProfileController::class);
-
-Route::resource('/kuliah', KuliahController::class);
-
-Route::resource('/kendaraan', KendaraanController::class);
-
-Route::resource('/hobi', HobiController::class);
-
-Route::resource('/matakuliah', MataKuliahController::class);
-
-Route::prefix('keluarga')->group(function () {
-    Route::get('/', [KeluargaController::class, 'index']);
-    Route::get('/{data:slug}', [KeluargaController::class, 'show']);
-});
+Route::get('/', [LoginController::class, 'showLoginForm']);
