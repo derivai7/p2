@@ -69,6 +69,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('mahasiswa') }}" class="nav-link">
+                        <i class="nav-icon fas fa-graduation-cap"></i>
+                        <p>
+                            Data Mahasiswa
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>

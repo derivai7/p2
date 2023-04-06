@@ -1,19 +1,14 @@
 <?php
 
-use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HobiController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\KuliahController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -149,6 +144,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [KeluargaController::class, 'index']);
         Route::get('/{data:slug}', [KeluargaController::class, 'show']);
     });
+
+    Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
+
+//    Route::put('{id}/edit','MahasiswaController@edit')->name('mahasiswa.edit');
+
 
     Route::get('/logout', [LoginController::class, 'logout']);
 });

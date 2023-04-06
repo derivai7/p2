@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Daftar Mahasiswa</h1>
+                    <h1>{{ $title }}</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -15,53 +15,94 @@
     <!-- Main content -->
     <section class="content">
         <div class="card">
-            <div class="card-header">
-                <a href="" class="btn btn-success">Tambah Mahasiswa</a>
-            </div>
-            <div class="card-body">
-
-            </div>
+            <form method="post" action="{{ $url_form }}">
+                @csrf
+                {!!  (isset($mhs)) ? method_field('put') : '' !!}
+                <div class="card-header">
+                    <div class="mb-3">
+                        <label for="nim" class="form-label">NIM</label>
+                        <input class="form-control @error('nim') is-invalid @enderror"
+                               value="{{ isset($mhs) ? $mhs->nim : old('nim') }}" id="nim" name="nim"
+                               type="text"/>
+                        @error('nim')
+                        <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input class="form-control @error('nama') is-invalid @enderror"
+                               value="{{ isset($mhs) ? $mhs->nama : old('nama') }}" id="nama"
+                               name="nama" type="text"/>
+                        @error('nama')
+                        <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="jk" class="form-label">Jenis Kelamin</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="jk" id="l"
+                                   value="l" {{ (isset($mhs) AND $mhs->jk == 'l') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="l">
+                                Laki-laki
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="jk" id="p"
+                                   value="p" {{ (isset($mhs) AND $mhs->jk == 'p') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="p">
+                                Perempuan
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+                        <input class="form-control @error('tempat_lahir') is-invalid @enderror"
+                               value="{{ isset($mhs) ? $mhs->tempat_lahir : old('tempat_lahir') }}" id="tempat_lahir"
+                               name="tempat_lahir" type="text"/>
+                        @error('tempat_lahir')
+                        <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                        <input class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                               value="{{ isset($mhs)? $mhs->tanggal_lahir : old('tanggal_lahir') }}" id="tanggal_lahir"
+                               name="tanggal_lahir" type="text"/>
+                        @error('tanggal_lahir')
+                        <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="alamat" class="form-label">Alamat</label>
+                        <input class="form-control @error('alamat') is-invalid @enderror"
+                               value="{{ isset($mhs)? $mhs->alamat : old('alamat') }}" id="alamat"
+                               name="alamat" type="text"/>
+                        @error('alamat')
+                        <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="hp" class="form-label">HP</label>
+                        <input class="form-control @error('hp') is-invalid @enderror"
+                               value="{{ isset($mhs)? $mhs->hp : old('hp') }}" id="hp" name="hp"
+                               type="text"/>
+                        @error('hp')
+                        <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="card-body">
+                    <button type="submit" class="btn btn-primary">Kirim</button>
+                </div>
+            </form>
 
         </div>
         <!-- Content -->
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">NIM</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Tempat, tanggal Lahir</th>
-                <th scope="col">HP</th>
-                <th scope="col">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            @if(empty($mhs))
-                @foreach($mhs as $i => $m)
-                    <tr>
-                        <th scope="row">{{ $i + 1 }}</th>
-                        <td>{{ $m->nim }}</td>
-                        <td>{{ $m->nama }}</td>
-                        <td>{{ $m->jenis_kelamin }}</td>
-                        <td>{{ $m->tempat_lahir . ', ' . $m->tanggal_lahir }}</td>
-                        <td>{{ $m->hp }}</td>
-                        {{--Tombol edit dan delete--}}
-                        <td>
-                            <a href="{{ url('/mahasiswa' . $m->id . '/edit') }}" class="btn btn-primary">Edit</a> |
-                            <a href="{{ url('/mahasiswa' . $m->id) }}" class="btn btn-danger">Hapus</a>
-                        </td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="7" class="text-center">Data tidak ada</td>
-                </tr>
-            @endif
-            </tbody>
-        </table>
+
         <!-- /.card -->
 
     </section>
     <!-- /.content -->
 @endsection
+
+
