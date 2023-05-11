@@ -11,6 +11,8 @@ class MahasiswaModel extends Model
 
     protected $table = 'mahasiswa';
     protected $fillable = [
+        'prodi_id',
+        'kelas_id',
         'nim',
         'nama',
         'jk',
@@ -19,4 +21,20 @@ class MahasiswaModel extends Model
         'alamat',
         'hp'
     ];
+
+    public function prodi() {
+        return $this->belongsTo(ProdiModel::class);
+    }
+
+    public function hobbies() {
+        return $this->hasMany(HobiModel::class, 'mahasiswa_id');
+    }
+
+    public function kelas() {
+        return $this->belongsTo(KelasModel::class);
+    }
+
+    public function mahasiswaMatakuliah() {
+        return $this->hasMany(MahasiswaMataKuliahModel::class, 'mahasiswa_id');
+    }
 }

@@ -29,6 +29,34 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="prodi" class="form-label">Prodi</label>
+                        <select class="form-control" id="prodi" name="prodi_id">
+                            @foreach($prodi as $p)
+                                <option value="{{ $p->id }}"
+                                        @if(isset($mhs))
+                                            @if($mhs->prodi_id == $p->id)
+                                                selected
+                                            @endif
+                                        @endif>{{ $p->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="kelas" class="form-label">Kelas</label>
+                        <select class="form-control" id="kelas" name="kelas_id">
+                            @foreach($kelas as $k)
+                                <option value="{{ $k->id }}"
+                                        @if(isset($mhs))
+                                            @if($mhs->kelas_id == $k->id)
+                                                selected
+                                            @endif
+                                        @endif>{{ $k->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input class="form-control @error('nama') is-invalid @enderror"
                                value="{{ isset($mhs) ? $mhs->nama : old('nama') }}" id="nama"
@@ -67,7 +95,7 @@
                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                         <input class="form-control @error('tanggal_lahir') is-invalid @enderror"
                                value="{{ isset($mhs)? $mhs->tanggal_lahir : old('tanggal_lahir') }}" id="tanggal_lahir"
-                               name="tanggal_lahir" type="text"/>
+                               name="tanggal_lahir" type="date"/>
                         @error('tanggal_lahir')
                         <span class="error invalid-feedback">{{ $message }} </span>
                         @enderror

@@ -14,30 +14,59 @@ class MataKuliahSeeder extends Seeder
     {
         DB::table('mata_kuliah')->insert([
             [
-                'matkul' => 'Pemrograman Web Lanjut',
-                'dosen_pengampu' => 'Moch. Zawaruddin Abdullah, S.ST., M.Kom.',
-                'sks' => 3
+                'nama' => 'Kewarganegaraan',
+                'sks' => 2,
+                'jam' => 2,
+                'semester' => 4
             ],
             [
-                'matkul' => 'Proyek 1',
-                'dosen_pengampu' => 'Farid Angga Pribadi, S.Kom., M.Kom.',
-                'sks' => 6
+                'nama' => 'Analisis dan Desain Berorientasi Objek',
+                'sks' => 2,
+                'jam' => 4,
+                'semester' => 4
             ],
             [
-                'matkul' => 'Analisis dan Desain Berorentasi Objek',
-                'dosen_pengampu' => 'Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom.',
-                'sks' => 2
+                'nama' => 'Manajemen Proyek',
+                'sks' => 2,
+                'jam' => 3,
+                'semester' => 4
             ],
             [
-                'matkul' => 'Manajemen Proyek',
-                'dosen_pengampu' => 'Candra Bella Vista, S.Kom., M.T.',
-                'sks' => 2
+                'nama' => 'Proyek 1',
+                'sks' => 3,
+                'jam' => 6,
+                'semester' => 4
             ],
             [
-                'matkul' => 'Jaringan Komputer',
-                'dosen_pengampu' => 'Kadek Suarjuna Batubulan, S.Kom., M.T.',
-                'sks' => 6
-            ]
+                'nama' => 'Business Intelligence',
+                'sks' => 2,
+                'jam' => 4,
+                'semester' => 4
+            ],
+            [
+                'nama' => 'Jaringan Komputer',
+                'sks' => 2,
+                'jam' => 4,
+                'semester' => 4
+            ],
+            [
+                'nama' => 'Praktikum Jaringan Komputer',
+                'sks' => 2,
+                'jam' => 4,
+                'semester' => 4
+            ],
+            [
+                'nama' => 'Pemrograman Web Lanjut',
+                'sks' => 3,
+                'jam' => 6,
+                'semester' => 4
+            ],
+            [
+                'nama' => 'Statitik Komputasi',
+                'sks' => 2,
+                'jam' => 4,
+                'semester' => 4
+            ],
         ]);
     }
 }

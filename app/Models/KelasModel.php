@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use mysql_xdevapi\Table;
 
-class HobiModel extends Model
+class KelasModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'hobi';
+    protected $table = 'kelas';
 
     public function mahasiswa() {
-        return $this->belongsTo(MahasiswaModel::class);
+        return $this->hasMany(MahasiswaModel::class);
     }
 }

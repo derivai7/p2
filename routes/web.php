@@ -146,8 +146,9 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
+    Route::get('mahasiswa/{id}/nilai', [MahasiswaController::class, 'nilai'])->name('mahasiswa.nilai');
 
-//    Route::put('{id}/edit','MahasiswaController@edit')->name('mahasiswa.edit');
+/// //    Route::put('{id}/edit','MahasiswaController@edit')->name('mahasiswa.edit');
 
 
     Route::get('/logout', [LoginController::class, 'logout']);

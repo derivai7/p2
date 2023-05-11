@@ -22,6 +22,8 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">NIM</th>
+                <th scope="col">Prodi</th>
+                <th scope="col">Kelas</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Tempat, tanggal Lahir</th>
@@ -35,14 +37,20 @@
                     <tr>
                         <th scope="row">{{ $i + 1 }}</th>
                         <td>{{ $m->nim }}</td>
+                        <td>{{ $m->prodi->nama }}</td>
+                        <td>{{ $m->kelas->nama }}</td>
                         <td>{{ $m->nama }}</td>
                         <td>{{ ($m->jk == 'l') ? 'Laki-laki' : 'Perempuan' }}</td>
                         <td>{{ $m->tempat_lahir . ', ' . $m->tanggal_lahir }}</td>
                         <td>{{ $m->hp }}</td>
                         {{--Tombol edit dan delete--}}
                         <td class="d-flex">
+                            <a href="{{ url('/mahasiswa/' . $m->id) }}"
+                               class="btn btn-sm btn-success mr-2"><i class="far fa-eye"></i></a>
                             <a href="{{ url('/mahasiswa/' . $m->id . '/edit') }}"
                                class="btn btn-sm btn-primary mr-2"><i class="fas fa-edit"></i></a>
+                            <a href="{{ url('/mahasiswa/' . $m->id . '/nilai') }}"
+                               class="btn btn-sm btn-secondary mr-2"><i class="fas fa-user-graduate"></i></a>
                             <form method="POST" action="{{ url('/mahasiswa/' . $m->id) }}">
                                 @csrf
                                 @method('DELETE')
@@ -55,7 +63,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="7" class="text-center">Data tidak ada</td>
+                    <td colspan="9" class="text-center">Data tidak ada</td>
                 </tr>
             @endif
             </tbody>

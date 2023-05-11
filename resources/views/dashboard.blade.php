@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 @extends('layouts.template')
 
 @section('content')
@@ -18,7 +19,7 @@
         <!-- Content -->
         <div class="card">
             <div class="card-body">
-                Selamat Datang!
+                Selamat Datang {{ Auth::user()["name"] }}.
             </div>
         </div>
         <!-- /.card -->
@@ -36,6 +37,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js"
             integrity="sha256-5WYg3s9NxGKR2MpEBTy0QMT3Gvgxl3yKjbW4l0CfUUY=" crossorigin="anonymous"></script>
     <script>
-        Swal.fire('Selamat Datang')
+        Swal.fire("Selamat Datang")
     </script>
 @endpush

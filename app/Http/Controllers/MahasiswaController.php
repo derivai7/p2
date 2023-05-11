@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HobiModel;
+use App\Models\KelasModel;
 use App\Models\MahasiswaModel;
+use App\Models\ProdiModel;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,6 +22,7 @@ class MahasiswaController extends Controller
         $mhs = MahasiswaModel::all();
         return view('mahasiswa.mahasiswa')
             ->with('title', 'Data Mahasiswa')
+            ->with('hobbies', HobiModel::all())
             ->with('mhs', $mhs);
     }
 
@@ -29,6 +33,8 @@ class MahasiswaController extends Controller
     {
         return view('mahasiswa.create_mahasiswa')
             ->with('title', 'Tambah Mahasiswa')
+            ->with('prodi', ProdiModel::all())
+            ->with('kelas', KelasModel::all())
             ->with('url_form', url('/mahasiswa'));
     }
 
@@ -55,10 +61,17 @@ class MahasiswaController extends Controller
     /**
      * Display the specified resource.
      */
-//    public function show(MahasiswaModel $mahasiswa): Response
-//    {
-//        //
-//    }
+    public function show($id)
+    {
+        $mahasiswa = MahasiswaModel::find($id);
+        return view('mahasiswa.show_mahasiswa', ['title' => 'Detail Mahasiswa', 'mahasiswa' => $mahasiswa]);
+    }
+
+    public function nilai($id)
+    {
+        $mahasiswa = MahasiswaModel::find($id);
+        return view('mahasiswa.nilai_mahasiswa', ['title' => 'Nilai Mahasiswa', 'mahasiswa' => $mahasiswa]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -68,6 +81,8 @@ class MahasiswaController extends Controller
         $mhs = MahasiswaModel::find($id);
         return view('mahasiswa.create_mahasiswa')
             ->with('title', 'Ubah Mahasiswa')
+            ->with('prodi', ProdiModel::all())
+            ->with('kelas', KelasModel::all())
             ->with('mhs', $mhs)
             ->with('url_form', url('/mahasiswa/' . $id));
     }

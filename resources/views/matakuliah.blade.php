@@ -21,17 +21,19 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Mata Kuliah</th>
-                <th scope="col">Dosen Pengampu</th>
                 <th scope="col">SKS</th>
+                <th scope="col">Jam</th>
+                <th scope="col">Semester</th>
             </tr>
             </thead>
             <tbody>
             @foreach($matakuliah as $i => $m)
             <tr>
                 <th scope="row">{{ $i + 1 }}</th>
-                <td>{{ $m->matkul }}</td>
-                <td>{{ $m->dosen_pengampu }}</td>
+                <td>{{ $m->nama }}</td>
                 <td>{{ $m->sks }}</td>
+                <td>{{ $m->jam }}</td>
+                <td>{{ $m->semester }}</td>
             </tr>
             @endforeach
             </tbody>

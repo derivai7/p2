@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hobi', function (Blueprint $table) {
+        Schema::create('mahasiswa_matakuliah', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mahasiswa_id');
-            $table->string('hobi', 50)->nullable();
-            $table->text('alasan')->nullable();
+            $table->foreignId('matakuliah_id');
+            $table->string('nilai', 2);
             $table->timestamps();
         });
     }
@@ -25,6 +25,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hobi');
+        Schema::table('mahasiswa_matakuliah', function (Blueprint $table) {
+            $table->string('mahasiswa');
+            $table->dropForeign(['mahasiswa_id']);
+            $table->string('matakuliah');
+            $table->dropForeign(['matakuliah_id']);
+        });
     }
 };

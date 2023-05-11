@@ -17,7 +17,11 @@ class DatabaseSeeder extends Seeder
             HobiSeeder::class,
             MataKuliahSeeder::class,
             KeluargaSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            MahasiswaSeeder::class,
+            ProdiSeeder::class,
+            KelasSeeder::class,
+            MahasiswaMataKuliahSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 
