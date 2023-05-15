@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HobiController;
@@ -150,6 +151,8 @@ Route::middleware(['auth'])->group(function () {
 
 /// //    Route::put('{id}/edit','MahasiswaController@edit')->name('mahasiswa.edit');
 
+//    Route::resource('/articles', ArticleController::class)->parameter('articles', 'id');
+    Route::get('/articles/print_pdf', [ArticleController::class, 'printPDF']);
 
     Route::get('/logout', [LoginController::class, 'logout']);
 });
