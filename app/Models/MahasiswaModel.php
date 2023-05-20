@@ -15,6 +15,7 @@ class MahasiswaModel extends Model
         'kelas_id',
         'nim',
         'nama',
+        'image',
         'jk',
         'tempat_lahir',
         'tanggal_lahir',

@@ -7,6 +7,9 @@
             <h4>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h4>
             <h2>KARTU HASIL STUDI</h2>
         </div>
+        <div class="container-fluid my-3">
+            <a href="{{ route('mahasiswa.cetak-nilai', $mahasiswa->id) }}" class="btn btn-warning pe-auto">Cetak PDF</a>
+        </div>
         <div class="container-fluid d-flex my-3">
             <div class="pr-5">
                 <p class="font-weight-bold">Nama</p>

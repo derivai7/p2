@@ -25,6 +25,7 @@
                 <th scope="col">Prodi</th>
                 <th scope="col">Kelas</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Foto</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Tempat, tanggal Lahir</th>
                 <th scope="col">HP</th>
@@ -40,6 +41,7 @@
                         <td>{{ $m->prodi->nama }}</td>
                         <td>{{ $m->kelas->nama }}</td>
                         <td>{{ $m->nama }}</td>
+                        <td><img width="100px" src="{{ asset('storage/' . $m->image) }}" alt="Foto Mahasiwa"></td>
                         <td>{{ ($m->jk == 'l') ? 'Laki-laki' : 'Perempuan' }}</td>
                         <td>{{ $m->tempat_lahir . ', ' . $m->tanggal_lahir }}</td>
                         <td>{{ $m->hp }}</td>
@@ -63,7 +65,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="9" class="text-center">Data tidak ada</td>
+                    <td colspan="10" class="text-center">Data tidak ada</td>
                 </tr>
             @endif
             </tbody>

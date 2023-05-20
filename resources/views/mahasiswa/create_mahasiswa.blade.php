@@ -15,7 +15,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="card">
-            <form method="post" action="{{ $url_form }}">
+            <form method="post" action="{{ $url_form }}" enctype="multipart/form-data">
                 @csrf
                 {!!  (isset($mhs)) ? method_field('put') : '' !!}
                 <div class="card-header">
@@ -62,6 +62,14 @@
                                value="{{ isset($mhs) ? $mhs->nama : old('nama') }}" id="nama"
                                name="nama" type="text"/>
                         @error('nama')
+                        <span class="error invalid-feedback">{{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Foto</label>
+                        <input class="form-control @error('image') is-invalid @enderror" id="image" name="image"
+                               type="file"/>
+                        @error('image')
                         <span class="error invalid-feedback">{{ $message }} </span>
                         @enderror
                     </div>
