@@ -7,8 +7,7 @@ use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response as Response;
+use Illuminate\Http\Response;
 
 class TodoController extends Controller
 {

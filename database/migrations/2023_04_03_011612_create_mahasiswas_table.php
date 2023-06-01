@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prodi_id');
-            $table->foreignId('kelas_id');
+            $table->foreignId('prodi_id')->nullable();
+            $table->foreignId('kelas_id')->nullable();
             $table->string('nim', 10)->unique();
             $table->string('nama', 50)->nullable();
             $table->string('image', 255)->nullable();

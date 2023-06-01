@@ -23,11 +23,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="prodi" class="form-label">Prodi</label>
-                        <input class="form-control" value="{{ $mahasiswa->prodi->nama }}" id="prodi" readonly/>
+                        <input class="form-control" value="{{ $mahasiswa->prodi->nama ?? null }}" id="prodi" readonly/>
                     </div>
                     <div class="mb-3">
                         <label for="kelas" class="form-label">Kelas</label>
-                        <input class="form-control" value="{{ $mahasiswa->kelas->nama }}" id="kelas" readonly/>
+                        <input class="form-control" value="{{ $mahasiswa->kelas->nama ?? null }}" id="kelas" readonly/>
                     </div>
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
@@ -41,7 +41,7 @@
                     <div class="mb-3">
                         <label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
                         <input class="form-control"
-                               value="{{ $mahasiswa->tempat_lahir }}, {{ $mahasiswa->tanggal_lahir }}" id="ttl"
+                               value="{{ $mahasiswa->tempat_lahir }} {{ $mahasiswa->tanggal_lahir }}" id="ttl"
                                readonly/>
                     </div>
                     <div class="mb-3">
@@ -54,14 +54,20 @@
                     </div>
                     <div class="mb-3">
                         <label for="hobi" class="form-label">Hobi</label>
-                        @foreach($mahasiswa->hobbies as $i => $hobby)
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" id="{{ $i }}" disabled>
-                                <label class="form-check-label" for="{{ $i }}">
-                                    {{ $i+1 }}. {{ $hobby->hobi }}
-                                </label>
+                        @if(count($mahasiswa->hobbies) > 0)
+                            @foreach($mahasiswa->hobbies as $i => $hobby)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="{{ $i }}" disabled>
+                                    <label class="form-check-label" for="{{ $i }}">
+                                        {{ $i+1 }}. {{ $hobby->hobi }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="text-secondary">
+                                Hobi Kosong
                             </div>
-                        @endforeach
+                        @endif
                     </div>
                 </div>
             </form>

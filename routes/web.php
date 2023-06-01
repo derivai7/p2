@@ -146,10 +146,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{data:slug}', [KeluargaController::class, 'show']);
     });
 
+    Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
     Route::get('mahasiswa/{id}/nilai', [MahasiswaController::class, 'nilai'])->name('mahasiswa.nilai');
     Route::get('mahasiswa/{id}/nilai/cetak', [MahasiswaController::class, 'cetakNilai'])
         ->name('mahasiswa.cetak-nilai');
+
+    Route::post('/mahasiswa/data', [MahasiswaController::class, 'data']);
 
 /// //    Route::put('{id}/edit','MahasiswaController@edit')->name('mahasiswa.edit');
 
